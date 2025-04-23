@@ -1,0 +1,421 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  
+  body {
+    line-height: 1.6;
+    background: #F0EDEE; /* White background for the mission section */;
+    color: #333;
+  }
+  
+  nav {
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+nav.scrolled {
+    background: #55aec4b9; /* Darker background */
+    transition: background 0.3s ease;
+}
+  nav .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  nav .logo img {
+    min-height: 70px;
+    height: auto;
+    width: auto;
+    display: block;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 6rem;
+  }
+    nav ul li a {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5rem 1rem; /* Add padding for the bubble */
+        border-radius: 20px; /* Make the bubble rounded */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    }
+    nav ul li a:hover {
+        background-color: #EF8354; /* Light bubble effect */
+        color: #fff; /* Ensure text remains visible */
+    }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1.25rem;
+  }
+  
+  header {
+    height: 90vh;
+    background-color: #55AEC4; /* Replace with your desired solid color */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: ellipse(100% 95% at 35% 0%); 
+}
+  
+  header .overlay {
+    background-color: rgba(0, 0, 0, 0.185);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between; /* Space between the image and text */
+    align-items: center; /* Vertically center the content */
+    color: white;
+    padding: 0 5%;
+}
+    .header-text {
+        color: #F0EDEE;
+        text-align: right; /* Align text to the right */
+        min-width: 40%; /* Limit the width of the text to share space with the image */
+        margin-right: 1.5rem;
+    }
+  
+    .header-text h1 {
+        font-family: "Domine", serif;
+        font-size: 3.7rem;
+        font-weight: 500;
+        font-style: normal;
+        margin-bottom: 1rem;
+    }
+    
+    .header-text p {
+        font-family: "Domine", serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        /* max-width: 500px; */
+    }
+  
+  .header-image {
+    padding-top: 4rem;
+    margin-right: 2rem;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    max-width: 45%; /* Limit the width of the image to share space with the text */
+}
+  
+.header-image img {
+    width: 100%; /* Make the image responsive */
+    height: auto;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #mission {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1rem 0rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    scroll-margin-top: 100px; /* Adjust this value to match the height of your navbar */
+}
+.mission-text h2 {
+    /* font-size: 8rem; */
+    margin-bottom: 1rem;
+    color: #003366;
+    text-align: left; /* Align the mission statement title to the right */
+}
+.mission-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-self: center; 
+}
+#mission .mission-text h2 {
+    font-size: 3.5rem; /* Adjust the size as needed */
+}
+.mission-text ul {
+    padding-left: 2rem; /* Indent the list */
+    list-style-type: disc; /* Optional: Add bullet points */
+}
+
+.mission-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left: 1 part, Right: 2 parts */
+    gap: 6rem;
+    width: 100%;
+    align-items: center; /* Align items to the top of the grid */
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for the diamond layout */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows for the diamond layout */
+    gap: 0.25rem;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    min-width: 450px; /* Minimum width for the grid */
+    animation: spin-diamond 20s linear infinite; /* Add spinning animation */
+}
+
+/* Keyframes for spinning the diamond */
+@keyframes spin-diamond {
+    from {
+        transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    to {
+        transform: rotate(360deg); /* Complete a full rotation */
+    }
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    grid-column: span 1;
+    grid-row: span 1;
+    transform: rotate(-360deg); /* Counter-rotate to keep content upright */
+    animation: spin-content 20s linear infinite; /* Match the container's animation */
+}
+
+/* Keyframes for counter-rotating the content */
+@keyframes spin-content {
+    from {
+        transform: rotate(0deg); /* Start upright */
+    }
+    to {
+        transform: rotate(-360deg); /* Counteract the container's rotation */
+    }
+}
+
+.team-member img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member p {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Positioning for the diamond layout */
+.member1 {
+    grid-column: 2; /* Center column */
+    grid-row: 1; /* Top row */
+}
+
+.member2 {
+    grid-column: 1; /* Left column */
+    grid-row: 2; /* Middle row */
+}
+
+.member3 {
+    grid-column: 3; /* Right column */
+    grid-row: 2; /* Middle row */
+}
+
+.member4 {
+    grid-column: 2; /* Center column */
+    grid-row: 3; /* Bottom row */
+}
+
+.mission-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mission-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #003366;
+}
+
+.mission-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+  section {
+    padding: 8rem 2rem; /* Increase top padding to account for the navbar height */
+    max-width: 90%;
+    margin: 0 auto;
+}
+  
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  #dataviz h2 {
+    padding-top: 2rem; /* Add padding to the top of the title */
+    font-size: 2.5rem; /* Make the title slightly larger */
+    text-align: center; /* Center the title */
+    color: #003366; /* Keep the color consistent or adjust as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a fun effect */
+}
+.dataviz-note {
+    text-align: center; /* Center the note under the title */
+    font-size: 1rem; /* Make the text smaller than the title */
+    color: #555; /* Use a subtle color for the note */
+    margin-top: 0.5rem; /* Add some spacing between the title and the note */
+    font-style: italic; /* Make the text italic for emphasis */
+}
+  #dataviz iframe {
+    width: 90%; /* Make it span the full width */
+    height: 750px; /* Adjust height as needed */
+    border: none; /* Remove the border around the iframe */
+    display: block; /* Ensure it behaves like a block element */
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove padding */
+}
+
+#dataviz {
+    width: 100%;
+    padding: 0 0rem; /* Add padding to the sides of the section */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    background-color: #fff;
+    border-radius: 15px; /* Add rounded edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for a modern look */
+}
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+  
+  .blog-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-card a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+  }
+  
+  audio, iframe {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+  }
+  
+  footer {
+    background: #55AEC4;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  footer .socials {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .go-back-button {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background-color: #55AEC4; /* Button background color */
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+    background-color: #003366; /* Darker background on hover */
+}
+#media {
+    margin-bottom: 1rem; /* Reduce space below the podcast section */
+}
+
+#interviews {
+    margin-top: 1rem; /* Reduce space above the interviews section */
+    margin-bottom: 1rem; /* Reduce space below the interviews section */
+    text-align: center;
+}
+
+#interviews h2 {
+    font-size: 1.75rem; /* Slightly smaller heading */
+    margin-bottom: 0.5rem; /* Reduce space below the heading */
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Reduce space between the videos */
+    flex-wrap: wrap; /* Ensure videos stack on smaller screens */
+}
+
+.video-container iframe {
+    flex: 1 1 45%; /* Keep videos responsive */
+    max-width: 560px; /* Ensure videos don't exceed their original width */
+    height: 315px; /* Maintain aspect ratio */
+    margin: 0; /* Remove any default margins */
+}
